@@ -1,7 +1,8 @@
 import React from 'react';
 
 interface DataItem {
-    id: string;
+    _id?: string; // Making it optional with '?'
+    id?: string;
     Name: string;
     Description: string;
     Email: string;
@@ -18,10 +19,10 @@ const DataDisplayComponent: React.FC<DataDisplayProps> = ({ data }) => {
     }
 
     // Destructure data object to get individual properties
-    const { id, Name, Description, Email, Image } = data;
+    const { Name, Description, Email, Image } = data;
 
     // Check if specific properties are undefined
-    if (!id || !Name || !Description || !Email || !Image) {
+    if (!Name || !Description || !Email || !Image) {
         return <p></p>;
     }
 
