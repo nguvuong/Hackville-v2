@@ -1,10 +1,16 @@
 // mongo.js
 import { MongoClient } from 'mongodb';
+import process from 'process';
+require('dotenv').config();
+const mongodbUri: string = process.env.MONGODB_URI ?? '';
 
 export async function connectToDatabase() {
-    const client = await MongoClient.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+    if (!mongodbUri) {
+        throw new Error('MongoDB URI is not defined');
+    }
+
+    const client = await MongoClient.connect(mongodbUri, {
+
     });
 
     return client;

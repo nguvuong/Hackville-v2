@@ -3,7 +3,8 @@ import QrScanner from 'qr-scanner';
 import { Button } from "@/components/ui/button";
 import { Camera, MapPin, MessageSquare } from "lucide-react";
 import Link from 'next/link';
-import NavBar from './components/NavBar';
+import NavBar from './NavBar';
+
 export default function Home() {
   const [data, setData] = useState<string | null>(null);
   const [isCameraActive, setIsCameraActive] = useState(false);

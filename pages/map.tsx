@@ -1,12 +1,11 @@
 // pages/about.tsx
 import React, { useEffect, useState } from 'react';
 import { connectToDatabase } from './api/mongo';
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { List, ListItem, Card } from "@material-tailwind/react";
-import Link from 'next/link';
+
+
 import { useRouter } from 'next/router';
-import NavBar from './components/NavBar';
-import DataDisplayComponent from './components/DataDisplayComponent';
+import NavBar from './NavBar';
+import DataDisplayComponent from './DataDisplayComponent';
 // import gsap from 'gsap';
 
 interface MapPageProps {
@@ -28,7 +27,7 @@ const MapPage: React.FC<MapPageProps> = ({ data }) => {
     const { id } = router.query;
     const [selectedOption, setSelectedOption] = useState<string>(''); // Assuming the value is a string
 
-    const handleOptionClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, itemId: string) => {
+    const handleOptionClick = (e: React.MouseEvent<HTMLOptionElement, MouseEvent>, itemId: string) => {
         setSelectedOption(itemId);
     };
 
@@ -68,7 +67,7 @@ const MapPage: React.FC<MapPageProps> = ({ data }) => {
                         <option
                             key={item._id}
                             value={item._id}
-                            onMouseDown={(e) => handleOptionClick(e, item._id)}
+                            onMouseDown={(e: React.MouseEvent<HTMLOptionElement, MouseEvent>) => handleOptionClick(e as any, item._id)}
                         >
                             {item.Name}
                         </option>
